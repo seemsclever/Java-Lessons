@@ -1,14 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        String str = "adsswwssda";
-        char[] letters = str.toCharArray();
-        boolean isPalindrom = true;
-        for (int i = 0; i < letters.length/2; i++) {
-            if (letters[i] != letters[letters.length - i - 1]) {
-                isPalindrom = false;
-                break;
+        int[] arr = {3, 45, 2, 50, 46, 1, 42, 2, 6, 70, 11, 3};
+        int maxValue = 0;
+        int maxValue2 = 0;
+        for (int i : arr) {
+            if (i >= maxValue) {
+                maxValue2 = maxValue;
+                maxValue = i;
             }
         }
-        System.out.println("isPalindrom = " + isPalindrom);
+        int sum = maxValue + maxValue2;
+        System.out.println("sum = " + sum);
     }
 }
