@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Employee {
-    private String name;
-    private String surname;
-    private String patronymic;
+    private final String name;
+    private final String surname;
+    private final String patronymic;
     private int department;
     private int id;
     private double salary;

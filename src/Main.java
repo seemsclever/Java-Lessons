@@ -13,7 +13,7 @@ public class Main {
 
 
         Employee.printAnReport(Employees);
-        
+
         Employee.indexSalaries(Employees, 10);
 
         Employee.printAnReportForDepartment(Employees, 2);
