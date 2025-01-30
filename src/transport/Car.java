@@ -3,28 +3,28 @@ package transport;
 public class Car {
     private final String brand;
     private final String model;
-    private final float engineDisplacement;
-    private final String color;
+    private float engineDisplacement;
+    private String color;
     private final int yearOfProduction;
     private final String countryOfAssembly;
     private String transmission;
-    private String bodyType;
+    private final String bodyType;
     private String registrationNumber;
-    private int amountOfSeats;
+    private final int amountOfSeats;
     private boolean isSummerTires;
 
     public Car(String brand, String model, float engineDisplacement, String color, int yearOfProduction, String countryOfAssembly, String transmission, String bodyType, String registrationNumber, int amountOfSeats, boolean isSummerTires) {
         this.brand = brand;
         this.model = model;
-        this.engineDisplacement = engineDisplacement;
-        this.color = color;
+        setEngineDisplacement(engineDisplacement);
+        setColor(color);
         this.yearOfProduction = yearOfProduction;
         this.countryOfAssembly = countryOfAssembly;
-        this.transmission = transmission;
+        setTransmission(transmission);
         this.bodyType = bodyType;
-        this.registrationNumber = registrationNumber;
+        setRegistrationNumber(registrationNumber);
         this.amountOfSeats = amountOfSeats;
-        this.isSummerTires = isSummerTires;
+        setIsSummerTires(isSummerTires);
     }
 
     public String toString() {
@@ -57,20 +57,36 @@ public class Car {
         }
     }
 
-    public boolean getIsSummerTires() {
-        return isSummerTires;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setIsSummerTires(boolean isSummerTires) {
-        this.isSummerTires = isSummerTires;
+    public String getModel() {
+        return model;
+    }
+
+    public int getYearOfProduction() {
+        return yearOfProduction;
+    }
+
+    public String getCountryOfAssembly() {
+        return countryOfAssembly;
+    }
+
+    public String getBodyType() {
+        return bodyType;
     }
 
     public int getAmountOfSeats() {
         return amountOfSeats;
     }
 
-    public void setAmountOfSeats(int amountOfSeats) {
-        this.amountOfSeats = checkAndSetValue(amountOfSeats, 0);
+    public boolean getIsSummerTires() {
+        return isSummerTires;
+    }
+
+    public void setIsSummerTires(boolean isSummerTires) {
+        this.isSummerTires = isSummerTires;
     }
 
     public String getRegistrationNumber() {
@@ -82,14 +98,9 @@ public class Car {
         if (arr.length == 9 && arr[0] == 'x' && arr[4] == 'x' && arr[5] == 'x'){
             this.registrationNumber = registrationNumber;
         }
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public void setBodyType(String bodyType) {
-        this.bodyType = checkAndSetValue(bodyType, "None");
+        else {
+            this.registrationNumber = "None";
+        }
     }
 
     public String getTransmission() {
@@ -98,6 +109,22 @@ public class Car {
 
     public void setTransmission(String transmission) {
         this.transmission = checkAndSetValue(transmission, "None");
+    }
+
+    public void setEngineDisplacement(float engineDisplacement) {
+        this.engineDisplacement = checkAndSetValue(engineDisplacement, 0f);
+    }
+
+    public void setColor(String color) {
+        this.color = checkAndSetValue(color, "None");
+    }
+
+    public float getEngineDisplacement() {
+        return engineDisplacement;
+    }
+
+    public String getColor() {
+        return color;
     }
 }
 
