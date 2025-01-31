@@ -1,10 +1,10 @@
 package transport;
 
 public class CarService {
-    public void changeTiresToSummer(Car car) {
+    public static void changeTiresToSummer(Car car) {
         car.setIsSummerTires(true);
     }
-    public void changeTiresToWinter(Car car) {
+    public static void changeTiresToWinter(Car car) {
         car.setIsSummerTires(false);
     }
 }

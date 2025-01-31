@@ -1,7 +1,68 @@
 package transport;
 
 public class Car {
-    private final String brand;
+    public static class Brand{
+
+        private String name;
+        private String country;
+
+        public Brand(String name, String country) {
+            this.name = name;
+            this.country = country;
+        }
+
+        public String toString(){
+            return name + "(" + country + ")";
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+    }
+
+    public class Owner{
+        private String name;
+        private String dateOfBirth;
+
+        public Owner(String name, String dateOfBirth) {
+            this.name = name;
+            this.dateOfBirth = dateOfBirth;
+        }
+
+        public String toString(){
+            return name + "(" + dateOfBirth + ")";
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getDateOfBirth() {
+            return dateOfBirth;
+        }
+
+        public void setDateOfBirth(String dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+        }
+    }
+
+    private final Brand brand;
     private final String model;
     private float engineDisplacement;
     private String color;
@@ -12,8 +73,9 @@ public class Car {
     private String registrationNumber;
     private final int amountOfSeats;
     private boolean isSummerTires;
+    private Owner owner;
 
-    public Car(String brand, String model, float engineDisplacement, String color, int yearOfProduction, String countryOfAssembly, String transmission, String bodyType, String registrationNumber, int amountOfSeats, boolean isSummerTires) {
+    public Car(Brand brand, String model, float engineDisplacement, String color, int yearOfProduction, String countryOfAssembly, String transmission, String bodyType, String registrationNumber, int amountOfSeats, boolean isSummerTires) {
         this.brand = brand;
         this.model = model;
         setEngineDisplacement(engineDisplacement);
@@ -30,7 +92,7 @@ public class Car {
     public String toString() {
         return "Марка - " + this.brand + "; Модель - " + this.model + "; Объем двигателя - " + this.engineDisplacement + "; Цвет - " + this.color + "; Год производства - "
                 + this.yearOfProduction + "; Страна сборки - " + this.countryOfAssembly + "; Коробка передач - " + this.transmission + "; Тип кузова - " + this.bodyType
-                + "; Регистрационный номер - " + this.registrationNumber + "; Количество мест - " + this.amountOfSeats + "; Летние ли шины - " + this.isSummerTires;
+                + "; Регистрационный номер - " + this.registrationNumber + "; Количество мест - " + this.amountOfSeats + "; Летние ли шины - " + this.isSummerTires + "; Владелец - " + owner;
     }
 
     public String checkAndSetValue(String value, String defaultValue) {
@@ -57,7 +119,7 @@ public class Car {
         }
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
@@ -125,6 +187,14 @@ public class Car {
 
     public String getColor() {
         return color;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
 
