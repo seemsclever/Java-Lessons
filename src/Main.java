@@ -15,6 +15,7 @@ public class Main {
         Car.Owner ownerMuhametovDI = BMW.new Owner("Muhametov Danil Ilgizovich", "07.10.2003");
         BMW.setOwner(ownerMuhametovDI);
         System.out.println(BMW);
+        System.out.println(BMW.knowHowToDrive());
 
         BMW.setColor("White");
         BMW.setRegistrationNumber("x222xx123");
@@ -24,5 +25,7 @@ public class Main {
         Bus.Brand NEFAZBrand = new Bus.Brand("NEFAZ", "Russia");
         Bus NEFAZ = new Bus(NEFAZBrand, "FK431", 2010, NEFAZBrand.getCountry(), "White", 110);
         System.out.println(NEFAZ);
+        System.out.println(NEFAZ.knowHowToDrive());
+        NEFAZ.refill();
     }
 }

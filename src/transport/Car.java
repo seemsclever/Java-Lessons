@@ -8,6 +8,8 @@ public class Car extends Transport{
     private String registrationNumber;
     private final int amountOfSeats;
     private boolean isSummerTires;
+    protected String howToDrive = "It Is Easy To Drive Me";
+    protected float fuelPercentage;
 
     public Car(Brand brand, String model, float engineDisplacement, String color, int maxSpeed, int yearOfProduction, String countryOfAssembly, String transmission, String bodyType, String registrationNumber, int amountOfSeats, boolean isSummerTires) {
         super(brand, model, yearOfProduction, countryOfAssembly, color, maxSpeed);
@@ -22,31 +24,17 @@ public class Car extends Transport{
     public String toString() {
         return "Марка - " + this.brand + "; Модель - " + this.model + "; Объем двигателя - " + this.engineDisplacement + "; Цвет - " + this.color + "; Год производства - "
                 + this.yearOfProduction + "; Максимальная скорость - " + this.maxSpeed + "; Страна сборки - " + this.countryOfAssembly + "; Коробка передач - " + this.transmission + "; Тип кузова - " + this.bodyType
-                + "; Регистрационный номер - " + this.registrationNumber + "; Количество мест - " + this.amountOfSeats + "; Летние ли шины - " + this.isSummerTires + "; Владелец - " + this.owner;
+                + "; Регистрационный номер - " + this.registrationNumber + "; Количество мест - " + this.amountOfSeats + "; Летние ли шины - " + this.isSummerTires + "; Владелец - " + this.owner + "; Процент топлива - " + this.fuelPercentage;
     }
 
-    public static String checkAndReturnValue(String value, String defaultValue) {
-        if (value != null && !value.isBlank()) {
-            return value;
-        } else {
-            return defaultValue;
-        }
+    @Override
+    public void refill() {
+        fuelPercentage = 100f;
+        System.out.println("Автомобиль заправлен до 100%");
     }
 
-    public static int checkAndReturnValue(int value, int defaultValue) {
-        if (value <= 0) {
-            return defaultValue;
-        } else {
-            return value;
-        }
-    }
-
-    public static float checkAndReturnValue(float value, float defaultValue) {
-        if (value <= 0.0F) {
-            return defaultValue;
-        } else {
-            return value;
-        }
+    public String knowHowToDrive() {
+        return "It Is Easy To Drive Me";
     }
 
     public String getBodyType() {
@@ -93,6 +81,14 @@ public class Car extends Transport{
 
     public float getEngineDisplacement() {
         return engineDisplacement;
+    }
+
+    public float getFuelPercentage() {
+        return fuelPercentage;
+    }
+
+    private void setFuelPercentage(float fuelPercentage) {
+        this.fuelPercentage = checkAndReturnValue(fuelPercentage, 0f);
     }
 }
 
