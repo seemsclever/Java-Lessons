@@ -59,16 +59,16 @@ public class Main {
         volvo1.startMoving();
         mercedes1.makePitStop();
 
-        DriverBCategory<Car> mihailo = new DriverBCategory<>("Mihailo", 30);
+        DriverBCategory mihailo = new DriverBCategory("Mihailo", 30);
         mihailo.setTransport(mercedes1);
         mihailo.startMoving();
 
-        DriverCCategory<Truck> alex = new DriverCCategory<>("Alex", 1);
+        DriverCCategory alex = new DriverCCategory("Alex", 1);
         alex.setTransport(volvo4);
         alex.startMoving();
 
-        DriverDCategory<Bus> dmitriy = new DriverDCategory<>("Dmitriy", 10);
-        dmitriy.setTransport(nefaz2);
+        DriverDCategory dmitriy = new DriverDCategory("Dmitriy", 10);
+        dmitriy.setTransport(nefaz1);
         dmitriy.startMoving();
     }
 }

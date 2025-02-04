@@ -2,7 +2,7 @@ package drivers;
 
 import transport.Truck;
 
-public class DriverCCategory<T extends Truck> extends Driver<T>{
+public class DriverCCategory extends Driver<Truck>{
 
     public DriverCCategory(String name, int experience) {
         super(name, experience);
