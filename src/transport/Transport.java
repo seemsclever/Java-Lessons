@@ -62,6 +62,7 @@ public abstract class Transport {
         }
     }
 
+    protected float engineDisplacement;
     protected Brand brand;
     protected String model;
     protected int yearOfProduction;
@@ -69,7 +70,12 @@ public abstract class Transport {
     protected String color;
     protected int maxSpeed;
     protected Owner owner;
-    protected final String howToDrive = "I Don't Know How To Drive Me";
+    protected String horn = "bip";
+
+    public Transport(Brand brand, String model){
+        this.brand = brand;
+        this.model = model;
+    }
 
     public Transport(Brand brand, String model, int yearOfProduction, String countryOfAssembly, String color, int maxSpeed) {
         this.brand = brand;
@@ -106,6 +112,14 @@ public abstract class Transport {
 
     public abstract void refill();
 
+    public void startMoving(){
+        System.out.println("Движение " + this.model + " начато.");
+    }
+
+    public void stopMoving(){
+        System.out.println("Движение закончено.");
+    }
+
     public Brand getBrand() {
         return brand;
     }
@@ -134,8 +148,16 @@ public abstract class Transport {
         return owner;
     }
 
-    public String knowHowToDrive() {
-        return "I Don't Know How To Drive Me";
+    public void horn() {
+        System.out.println(horn);
+    }
+
+    public void setEngineDisplacement(float engineDisplacement) {
+        this.engineDisplacement = checkAndReturnValue(engineDisplacement, 0f);
+    }
+
+    public float getEngineDisplacement() {
+        return engineDisplacement;
     }
 
     public void setOwner(Owner owner) {

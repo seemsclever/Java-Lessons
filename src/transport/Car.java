@@ -1,15 +1,21 @@
 package transport;
 
-public class Car extends Transport{
-
-    private float engineDisplacement;
+public class Car extends Transport implements Competing{
     private String transmission;
-    private final String bodyType;
+    private String bodyType;
     private String registrationNumber;
-    private final int amountOfSeats;
+    private int amountOfSeats;
     private boolean isSummerTires;
-    protected String howToDrive = "It Is Easy To Drive Me";
+    protected String horn = "Horn!";
     protected float fuelPercentage;
+
+    private float bestCircleTime;
+    private int maxSpeed;
+
+    public Car(Brand brand, String model, float engineDisplacement){
+        super(brand, model);
+        this.engineDisplacement = engineDisplacement;
+    }
 
     public Car(Brand brand, String model, float engineDisplacement, String color, int maxSpeed, int yearOfProduction, String countryOfAssembly, String transmission, String bodyType, String registrationNumber, int amountOfSeats, boolean isSummerTires) {
         super(brand, model, yearOfProduction, countryOfAssembly, color, maxSpeed);
@@ -31,10 +37,6 @@ public class Car extends Transport{
     public void refill() {
         fuelPercentage = 100f;
         System.out.println("Автомобиль заправлен до 100%");
-    }
-
-    public String knowHowToDrive() {
-        return "It Is Easy To Drive Me";
     }
 
     public String getBodyType() {
@@ -63,7 +65,7 @@ public class Car extends Transport{
             this.registrationNumber = registrationNumber;
         }
         else {
-            this.registrationNumber = "None";
+            this.registrationNumber = "Unknown";
         }
     }
 
@@ -72,15 +74,7 @@ public class Car extends Transport{
     }
 
     public void setTransmission(String transmission) {
-        this.transmission = checkAndReturnValue(transmission, "None");
-    }
-
-    public void setEngineDisplacement(float engineDisplacement) {
-        this.engineDisplacement = checkAndReturnValue(engineDisplacement, 0f);
-    }
-
-    public float getEngineDisplacement() {
-        return engineDisplacement;
+        this.transmission = checkAndReturnValue(transmission, "Unknown");
     }
 
     public float getFuelPercentage() {
@@ -89,6 +83,21 @@ public class Car extends Transport{
 
     private void setFuelPercentage(float fuelPercentage) {
         this.fuelPercentage = checkAndReturnValue(fuelPercentage, 0f);
+    }
+
+    @Override
+    public void makePitStop() {
+        System.out.println("Сделан пит-стоп " + brand.getName() + " " + model);
+    }
+
+    @Override
+    public void setBestCircleTime(float bestCircleTime) {
+        this.bestCircleTime = bestCircleTime;
+    }
+
+    @Override
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
     }
 }
 

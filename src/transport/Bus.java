@@ -1,8 +1,16 @@
 package transport;
 
-public class Bus extends Transport {
-    protected String howToDrive = "It Is Hard To Drive Me";
+public class Bus extends Transport implements Competing {
     protected float fuelPercentage;
+    protected String horn = "HOOOOOOOORN!!!";
+
+    private float bestCircleTime;
+    private int maxSpeed;
+
+    public Bus(Brand brand, String model, float engineDisplacement){
+        super(brand, model);
+        this.engineDisplacement = engineDisplacement;
+    }
 
     public Bus(Brand brand, String model, int yearOfProduction, String countryOfAssembly, String color, int maxSpeed) {
         super(brand, model, yearOfProduction, countryOfAssembly, color, maxSpeed);
@@ -18,10 +26,6 @@ public class Bus extends Transport {
         System.out.println("Автобус заправлен до 100%");
     }
 
-    public String knowHowToDrive() {
-        return "It Is Hard To Drive Me";
-    }
-
     public float getFuelPercentage() {
         return fuelPercentage;
     }
@@ -30,4 +34,18 @@ public class Bus extends Transport {
         this.fuelPercentage = checkAndReturnValue(fuelPercentage, 0f);
     }
 
+    @Override
+    public void makePitStop() {
+        System.out.println("Сделан пит-стоп " + brand.getName() + " " + model);
+    }
+
+    @Override
+    public void setBestCircleTime(float bestCircleTime) {
+        this.bestCircleTime = bestCircleTime;
+    }
+
+    @Override
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
 }
