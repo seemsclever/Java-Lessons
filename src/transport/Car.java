@@ -1,5 +1,7 @@
 package transport;
 
+import java.awt.*;
+
 public class Car extends Transport implements Competing{
     private String transmission;
     private String bodyType;
@@ -12,16 +14,38 @@ public class Car extends Transport implements Competing{
     private float bestCircleTime;
     private int maxSpeed;
 
+    public enum BodyType{
+        SEDAN("Седан"),
+        HATCHBACK("Хэтчбек"),
+        COUPE("Купе"),
+        STATION_WAGON("Универсал"),
+        SUV("Внедорожник"),
+        CROSSOVER("Кроссовер"),
+        PICKUP("Пикап"),
+        VAN("Фургон"),
+        MINIVAN("Минивэн");
+
+        private final String bodyTypeName;
+
+        BodyType(String bodyTypeName) {
+            this.bodyTypeName = bodyTypeName;
+        }
+
+        public String getBodyTypeName() {
+            return bodyTypeName;
+        }
+    }
+
     public Car(Brand brand, String model, float engineDisplacement){
         super(brand, model);
         this.engineDisplacement = engineDisplacement;
     }
 
-    public Car(Brand brand, String model, float engineDisplacement, String color, int maxSpeed, int yearOfProduction, String countryOfAssembly, String transmission, String bodyType, String registrationNumber, int amountOfSeats, boolean isSummerTires) {
+    public Car(Brand brand, String model, float engineDisplacement, String color, int maxSpeed, int yearOfProduction, String countryOfAssembly, String transmission, BodyType bodyType, String registrationNumber, int amountOfSeats, boolean isSummerTires) {
         super(brand, model, yearOfProduction, countryOfAssembly, color, maxSpeed);
         setEngineDisplacement(engineDisplacement);
         setTransmission(transmission);
-        this.bodyType = bodyType;
+        this.bodyType = bodyType.getBodyTypeName();
         setRegistrationNumber(registrationNumber);
         this.amountOfSeats = amountOfSeats;
         setIsSummerTires(isSummerTires);

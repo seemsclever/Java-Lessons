@@ -70,5 +70,8 @@ public class Main {
         DriverDCategory dmitriy = new DriverDCategory("Dmitriy", 10);
         dmitriy.setTransport(nefaz1);
         dmitriy.startMoving();
+
+        Car mercedes5 = new Car(mercedesBrand, "G30", 3.0f, "White", 300, 2020, "Czech", "Manual", Car.BodyType.STATION_WAGON, "x001xx003", 4, false);
+        System.out.println(mercedes5);
     }
 }

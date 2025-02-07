@@ -7,6 +7,24 @@ public class Bus extends Transport implements Competing {
     private float bestCircleTime;
     private int maxSpeed;
 
+    public enum PassengerCapacity{
+        EXTRA_SMALL("до 10"),
+        SMALL("до 25"),
+        MEDIUM("40–50"),
+        LARGE("60–80"),
+        EXTRA_LARGE("100–120");
+
+        private final String passengerCapacity;
+
+        PassengerCapacity(String passengerCapacity) {
+            this.passengerCapacity = passengerCapacity;
+        }
+
+        public String getPassengerCapacity() {
+            return passengerCapacity;
+        }
+    }
+
     public Bus(Brand brand, String model, float engineDisplacement){
         super(brand, model);
         this.engineDisplacement = engineDisplacement;
