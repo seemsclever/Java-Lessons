@@ -123,5 +123,10 @@ public class Car extends Transport implements Competing{
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
+
+    @Override
+    public void doCheckout(){
+        System.out.println("Произведена диагностика легкового автомобиля " + this.getBrand() + " " + this.getModel());
+    }
 }
 

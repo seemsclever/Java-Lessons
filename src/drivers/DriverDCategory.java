@@ -4,9 +4,7 @@ import transport.Bus;
 
 public class DriverDCategory extends Driver<Bus> {
 
-    public DriverDCategory(String name, int experience) {
-        super(name, experience);
-    }
+    public DriverDCategory(String name, int experience) { super(name, experience); }
 
     @Override
     public void startMoving() {

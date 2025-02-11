@@ -171,4 +171,8 @@ public abstract class Transport {
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = checkAndReturnValue(maxSpeed, 0);
     }
+
+    public void doCheckout(){
+        System.out.println("Произведена диагностика " + this.getBrand() + " " + this.getModel());
+    }
 }

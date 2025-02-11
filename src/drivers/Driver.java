@@ -1,5 +1,6 @@
 package drivers;
 
+import exceptions.DriverDontHaveLicenseException;
 import transport.Transport;
 
 public abstract class Driver<T extends Transport> {
@@ -8,8 +9,21 @@ public abstract class Driver<T extends Transport> {
     private T transport;
 
     public Driver(String name, int experience) {
-        this.name = name;
-        this.experience = experience;
+        setName(name);
+        try {
+            setExperience(experience);
+        } catch (DriverDontHaveLicenseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "name='" + name + '\'' +
+                ", experience=" + experience +
+                ", transport=" + transport.getBrand() + " " + transport.getModel() +
+                '}';
     }
 
     public String getName() {
@@ -24,8 +38,12 @@ public abstract class Driver<T extends Transport> {
         return experience;
     }
 
-    public void setExperience(int experience) {
-        this.experience = experience;
+    public void setExperience(int experience) throws DriverDontHaveLicenseException {
+        if (experience >= 0){
+            this.experience = experience;
+        } else {
+            throw new DriverDontHaveLicenseException("Стаж не может быть отрицательным.");
+        }
     }
 
     public T getTransport() {
