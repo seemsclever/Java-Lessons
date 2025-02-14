@@ -1,6 +1,4 @@
 import drivers.DriverBCategory;
-import drivers.DriverCCategory;
-import drivers.DriverDCategory;
 import transport.*;
 
 public class Main {
@@ -39,8 +37,8 @@ public class Main {
 //        System.out.println("Mercedes:");
 //        Car mercedes1 = new Car(mercedesBrand, "E63", 4.1f);
 //        Car mercedes2 = new Car(mercedesBrand, "E43", 3.1f);
-//        Car mercedes3 = new Car(mercedesBrand, "C63", 3.5f);
-//        Car mercedes4 = new Car(mercedesBrand, "C43", 2.5f);
+        Car mercedes3 = new Car(mercedesBrand, "C63", 3.5f);
+        Car mercedes4 = new Car(mercedesBrand, "C43", 2.5f);
 //        System.out.println(mercedes1 + "\n" + mercedes2 + "\n" + mercedes3 + "\n" + mercedes4);
 //        System.out.println();
 //
@@ -53,8 +51,8 @@ public class Main {
 //        System.out.println();
 //
 //        System.out.println("Volvo:");
-//        Truck volvo1 = new Truck(volvo, "CD321", 3.5f);
-//        Truck volvo2 = new Truck(volvo, "XF415", 4f);
+        Truck volvo1 = new Truck(volvo, "CD321", 3.5f);
+        Truck volvo2 = new Truck(volvo, "XF415", 4f);
 //        Truck volvo3 = new Truck(volvo, "DS431", 3.6f);
 //        Truck volvo4 = new Truck(volvo, "CD323", 3.3f);
 //        System.out.println(volvo1 + "\n" + volvo2 + "\n" + volvo3 + "\n" + volvo4);
@@ -82,5 +80,21 @@ public class Main {
         System.out.println(mercedes5);
 
         mercedes5.doCheckout();
+
+        System.out.println();
+
+        ServiceStation<Car> carServiceStation = new ServiceStation<>("CarPitStop", 1);
+        carServiceStation.addTransportToQueue(mercedes5);
+        carServiceStation.addTransportToQueue(mercedes4);
+        carServiceStation.addTransportToQueue(mercedes3);
+        System.out.println(carServiceStation.getQueueSize());
+
+        ServiceStation<Truck> truckServiceStation = new ServiceStation<>("TruckPitStop", 1);
+        truckServiceStation.addTransportToQueue(volvo2);
+        truckServiceStation.addTransportToQueue(volvo1);
+
+        carServiceStation.makeAllInspections();
+
+        truckServiceStation.makeAllInspections();
     }
 }
