@@ -1,5 +1,9 @@
-import drivers.DriverBCategory;
+
+import drivers.*;
 import transport.*;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Main {
     public Main() {
@@ -76,8 +80,8 @@ public class Main {
         Car mercedes5 = new Car(mercedesBrand, "G30", 3.0f, "White", 300, 2020, "Czech", "Manual", Car.BodyType.STATION_WAGON, "x001xx003", 4, false);
         DriverBCategory mihail = new DriverBCategory("Mihail", 30);
         mihail.setTransport(mercedes5);
-        System.out.println(mihail);
-        System.out.println(mercedes5);
+//        System.out.println(mihail);
+//        System.out.println(mercedes5);
 
         mercedes5.doCheckout();
 
@@ -87,7 +91,7 @@ public class Main {
         carServiceStation.addTransportToQueue(mercedes5);
         carServiceStation.addTransportToQueue(mercedes4);
         carServiceStation.addTransportToQueue(mercedes3);
-        System.out.println(carServiceStation.getQueueSize());
+//        System.out.println(carServiceStation.getQueueSize());
 
         ServiceStation<Truck> truckServiceStation = new ServiceStation<>("TruckPitStop", 1);
         truckServiceStation.addTransportToQueue(volvo2);
@@ -96,5 +100,15 @@ public class Main {
         carServiceStation.makeAllInspections();
 
         truckServiceStation.makeAllInspections();
+
+        Map<Transport, String> transportStringHashMap = new LinkedHashMap<>();
+        transportStringHashMap.putIfAbsent(mercedes3, "Гариев Ильсур");
+        transportStringHashMap.putIfAbsent(mercedes4, "Фазуллин Марат");
+        transportStringHashMap.putIfAbsent(mercedes5, "Митюшин Максим");
+        transportStringHashMap.putIfAbsent(volvo1, "Нигматуллин Айдар");
+
+        for (Transport transport : transportStringHashMap.keySet()) {
+            System.out.printf("%s обслуживает %s %s.%n", transportStringHashMap.get(transport), transport.getBrand(), transport.getModel());
+        }
     }
 }
