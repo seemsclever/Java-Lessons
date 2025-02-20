@@ -2,36 +2,38 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 6, 3, 2, 5};
-        //           0  1  2  3  4  5
-        System.out.println(Arrays.toString(arr));
-        int k = 6;
-        int index = 0;
-        int minElements = 5;
-        int leftIndex = 0;
-        while (leftIndex <= arr.length - 1){
-            int sum = 0;
-            int amounthOfElements = 0;
-            int rightIndex = leftIndex;
-            while (sum <= k && rightIndex <= arr.length - 1){
-                sum += arr[rightIndex];
-                rightIndex++;
-                amounthOfElements++;
+        int[] array = {0, 414, 24, 5151, 2522, 2};
+        System.out.println(Arrays.toString(getNumbersWithMaxAndMinDigits(array)));
+    }
+
+    public static int[] getNumbersWithMaxAndMinDigits(int[] arr){
+        int min = 0;
+        int max = 0;
+        int numOfDigits = 0;
+        int numberWithMin = 0;
+        int numberWithMax = 0;
+        for (int i : arr) {
+            numOfDigits = countDigits(i);
+            if (numOfDigits >= max){
+                max = numOfDigits;
+                numberWithMax = i;
+            } else if (numOfDigits <= min) {
+                min = numOfDigits;
+                numberWithMin = i;
             }
-            if (sum > k && amounthOfElements < minElements){
-                minElements = amounthOfElements;
-                index = leftIndex;
-            }
-            System.out.printf("arr[%d] = %d: Используется элементов - %d, Сумма - %d%n", leftIndex, arr[leftIndex], amounthOfElements, sum);
-            leftIndex++;
         }
-        System.out.printf("Ответ:%nЭлементы ");
-        for (int i = index; i < index + minElements; i++) {
-            System.out.printf("%d ", arr[i]);
+        int[] newArr = new int[2];
+        newArr[0] = numberWithMin;
+        newArr[1] = numberWithMax;
+        return newArr;
+    }
+
+    public static int countDigits(int a){
+        int numOfDigits = 0;
+        while (a > 0){
+            numOfDigits++;
+            a = a /10;
         }
-        System.out.printf("под индексами ");
-        for (int i = index; i < index + minElements; i++) {
-            System.out.printf("%d ", i);
-        }
+        return numOfDigits;
     }
 }
